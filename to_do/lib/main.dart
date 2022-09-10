@@ -61,11 +61,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text(data[index]['task']),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        supaBaseHandler.updateData(data[index]['id'], true);
+                        setState(() {});
+                      },
                       icon: const Icon(Icons.done),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        supaBaseHandler.deleteData(data[index]['id']);
+                        setState(() {});
+                      },
                       icon: const Icon(Icons.delete),
                     ),
                   ],
@@ -79,9 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.refresh),
         onPressed: () {
-          setState(() {
-            
-          });
+          setState(() {});
         },
       ),
     );
