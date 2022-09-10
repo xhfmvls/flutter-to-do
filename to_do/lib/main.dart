@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'supabase_handler.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -50,9 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
             itemBuilder: (context, index) {
               return Container(
                 height: 150,
-                color: data[index]['status']
-                    ? Colors.white
-                    : Colors.red,
+                color: data[index]['status'] ? Colors.white : Colors.red,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -75,6 +75,14 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
         future: supaBaseHandler.readData(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.refresh),
+        onPressed: () {
+          setState(() {
+            
+          });
+        },
       ),
     );
   }

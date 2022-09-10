@@ -1,9 +1,10 @@
 import 'package:supabase/supabase.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SupaBaseHandler {
-  static String supaBaseURL = '';
-  static String supaBaseKey = '';
+  static String supaBaseURL = dotenv.env['SupaBaseURL']!;
+  static String supaBaseKey = dotenv.env['SupaBaseKey']!;
 
   final client = SupabaseClient(supaBaseURL, supaBaseKey);
 
